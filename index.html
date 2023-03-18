@@ -1,0 +1,105 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Matrix Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script src="app.js"></script>
+</body>
+</html>
+<!--  <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>3D Matrix Animation</title>
+    <style>
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      // Create Matrix characters array
+      const matrixChars = ['0','1'];
+      const matrixLength = 20;
+      let columns = Math.ceil(w / matrixLength) + 1;
+      const drops = [];
+
+      for(let i = 0; i < columns; i++) {
+        drops[i] = 1;
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.fillStyle = '#0F0';
+        ctx.font = '15px arial';
+
+        for(let i = 0; i < drops.length; i++) {
+          let text = matrixChars[Math.floor(Math.random()*matrixChars.length)];
+          ctx.fillText(text, i*matrixLength, drops[i]*matrixLength);
+
+          if(drops[i]*matrixLength > h && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          drops[i]++;
+        }
+      }
+
+      // Interact with mouse
+      let mouseX = w / 2;
+      let mouseY = h / 2;
+
+      canvas.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animate() {
+        // Clear canvas
+        ctx.clearRect(0, 0, w, h);
+
+        // Adjust columns based on mouse position
+        columns = Math.ceil(mouseX / matrixLength) + 1;
+
+        // Draw Matrix animation
+        for(let i = 0; i < columns; i++) {
+          drops[i] = drops[i] >= Math.ceil(mouseY / matrixLength) ? drops[i] : drops[i] + 1;
+          for(let j = drops[i]; j >= 0; j--) {
+            let text = matrixChars[Math.floor(Math.random()*matrixChars.length)];
+            ctx.fillText(text, i*matrixLength, j*matrixLength);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
+  </body>
+</html> -->
